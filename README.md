@@ -220,9 +220,9 @@ Always:
 - Exercise caution when using elevated privileges.
 - Independently verify significant actions.
 
-Agentless assumes that a human operator remains responsible for all executed actions.
+Agentless assumes that a human operator remains responsible for all executed actions. Agentless should not be used as a substitute for professional judgement, operational procedures, security reviews, or change-management processes.
 
-No guarantee is provided regarding the correctness, safety, suitability, or consequences of generated actions.
+No guarantee is provided regarding the correctness, safety, suitability, or consequences of generated actions. 
 
 ---
 
@@ -255,9 +255,50 @@ Compatible with:
 ├── Agentless.md
 ├── README.md
 ├── docs/
-│   └── demo.gif
+│   ├── demo.gif
+│   └── sandbox.png
+├── tools/
+│   └── linux_wsl/
+│       └── agentless_sandbox.sh
 └── LICENSE
 ```
+
+---
+
+## Optional Tools
+
+Agentless is primarily a workflow and prompt framework.
+
+However, optional helper tools may be provided to improve safety and usability in specific environments.
+
+### Linux / WSL Sandbox
+
+A Bubblewrap-based sandbox that restricts write access to the target repository while keeping the rest of the filesystem read-only.
+
+Location:
+
+```text
+tools/linux_wsl/agentless_sandbox.sh
+```
+
+This tool is entirely optional.
+
+It is intended to reduce the risk of unintended modifications outside the target repository when executing AI-generated commands.
+
+Quick start:
+
+```bash
+cp tools/linux_wsl/agentless_sandbox.sh "$HOME/agentless_sandbox.sh"
+chmod +x "$HOME/agentless_sandbox.sh"
+cd /path/to/your/repository
+"$HOME/agentless_sandbox.sh"
+```
+
+Inside the sandbox, the target repository is available as the writable working directory.
+
+Example usage:
+
+![Agentless Sandbox restricting writes outside the target repository](docs/sandbox.png)
 
 ---
 
@@ -274,6 +315,32 @@ Agentless is a workflow.
 Its purpose is simple:
 
 **Obtain agent-like outcomes using evidence-driven iteration, human execution, and structured reasoning.**
+
+---
+
+## FAQ
+
+### Is this related to the Agentless SWE-bench project?
+
+No.
+
+This repository is unrelated to the academic Agentless project focused on software engineering benchmarks.
+
+Agentless focuses on human-supervised agentic workflows using standard chat-based AI systems and iterative evidence gathering.
+
+### Is Agentless an AI agent?
+
+No.
+
+Agentless is a workflow methodology.
+
+The human remains responsible for execution, validation, and decision-making.
+
+### Does Agentless require tool access?
+
+No.
+
+Agentless is specifically designed to operate in environments where direct tool execution, repository access, or autonomous agents may be unavailable or undesirable.
 
 ---
 
