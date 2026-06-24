@@ -10,6 +10,23 @@ Rather than granting an AI direct access to repositories, terminals, IDEs, or pr
 
 ---
 
+## Quick Start
+
+```text
+New Chat
+↓
+Attach Agentless.md
+↓
+"Operate as Agentless"
+↓
+State your objective
+↓
+Follow the workflow
+```
+See the demo below for a complete example.
+
+---
+
 ## Demo
 
 ![Agentless Demo](docs/demo.gif)
